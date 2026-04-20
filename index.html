@@ -37,12 +37,7 @@ body {
   overflow: hidden;
 }
 .hero::before {
-  content: '🏐';
-  font-size: 80px;
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  opacity: 0.15;
+  display: none;
 }
 .hero h1 {
   font-size: 24px;
@@ -271,9 +266,9 @@ body {
 
 <!-- HERO -->
 <div class="hero">
-  <h1>🏐 壁球术语速查</h1>
+  <h1>壁球术语速查</h1>
   <p>中英文双语 · 8大类别 · 90+术语<br>参考世界壁球联合会官方词汇表</p>
-  <div class="hero-badge">📱 移动端优化 · 随时查阅</div>
+  <div class="hero-badge">移动端优化 · 随时查阅</div>
 </div>
 
 <!-- STATS -->
@@ -285,20 +280,20 @@ body {
 
 <!-- SEARCH -->
 <div class="search-bar">
-  <input type="text" id="searchInput" placeholder="🔍 搜索中文或英文术语…" oninput="filterAll()">
+  <input type="text" id="searchInput" placeholder="搜索中文或英文术语…" oninput="filterAll()">
 </div>
 
 <!-- CAT NAV -->
 <div class="cat-nav" id="catNav">
   <button class="cat-btn c1 active" onclick="showCat('all', this)">全部</button>
-  <button class="cat-btn c1" onclick="showCat('s1', this)">🎾 击球技术</button>
-  <button class="cat-btn c2" onclick="showCat('s2', this)">🏐 场地设施</button>
-  <button class="cat-btn c3" onclick="showCat('s3', this)">🏸 战术跑位</button>
-  <button class="cat-btn c4" onclick="showCat('s4', this)">🏅 计分规则</button>
-  <button class="cat-btn c5" onclick="showCat('s5', this)">🎯 裁判术语</button>
-  <button class="cat-btn c6" onclick="showCat('s6', this)">🏆 赛事级别</button>
-  <button class="cat-btn c7" onclick="showCat('s7', this)">🧑 运动员</button>
-  <button class="cat-btn c8" onclick="showCat('s8', this)">🎒 器材</button>
+  <button class="cat-btn c1" onclick="showCat('s1', this)">击球技术</button>
+  <button class="cat-btn c2" onclick="showCat('s2', this)">场地设施</button>
+  <button class="cat-btn c3" onclick="showCat('s3', this)">战术跑位</button>
+  <button class="cat-btn c4" onclick="showCat('s4', this)">计分规则</button>
+  <button class="cat-btn c5" onclick="showCat('s5', this)">裁判术语</button>
+  <button class="cat-btn c6" onclick="showCat('s6', this)">赛事级别</button>
+  <button class="cat-btn c7" onclick="showCat('s7', this)">运动员</button>
+  <button class="cat-btn c8" onclick="showCat('s8', this)">器材</button>
 </div>
 
 <div class="sections">
