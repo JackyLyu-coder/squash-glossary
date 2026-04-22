@@ -1,509 +1,354 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>壁球术语 · Squash Glossary</title>
-<style>
-:root {
-  --primary: #1B4F72;
-  --accent: #E74C3C;
-  --bg: #F8F9FA;
-  --card: #FFFFFF;
-  --text: #2C3E50;
-  --muted: #7F8C8D;
-  --border: #E8EAED;
-  --yellow: #F39C12;
-  --blue: #2980B9;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  -webkit-text-size-adjust: 100%;
-}
-
-/* Hero */
-.hero {
-  background: linear-gradient(135deg, var(--primary) 0%, #2471A3 100%);
-  color: white;
-  padding: 36px 20px 28px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  display: none;
-}
-.hero h1 {
-  font-size: 24px;
-  font-weight: 800;
-  margin-bottom: 6px;
-  letter-spacing: 1px;
-}
-.hero p {
-  font-size: 13px;
-  opacity: 0.85;
-  line-height: 1.6;
-}
-.hero-badge {
-  display: inline-block;
-  background: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 20px;
-  padding: 3px 12px;
-  font-size: 11px;
-  margin-top: 10px;
-}
-
-/* Search */
-.search-bar {
-  padding: 12px 16px;
-  background: white;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-.search-bar input {
-  width: 100%;
-  height: 40px;
-  border: 2px solid var(--border);
-  border-radius: 12px;
-  padding: 0 16px;
-  font-size: 15px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.search-bar input:focus {
-  border-color: var(--primary);
-}
-
-/* Category nav */
-.cat-nav {
-  display: flex;
-  overflow-x: auto;
-  gap: 8px;
-  padding: 12px 16px;
-  background: white;
-  border-bottom: 1px solid var(--border);
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-.cat-nav::-webkit-scrollbar { display: none; }
-.cat-btn {
-  flex-shrink: 0;
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: 1.5px solid var(--border);
-  background: white;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--muted);
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-.cat-btn.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: white;
-}
-
-/* Sections */
-.sections { padding: 0 16px 40px; }
-
-.section { padding-top: 20px; }
-
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--border);
-}
-.section-title .icon { font-size: 22px; }
-
-/* Table */
-.term-table { width: 100%; border-collapse: collapse; }
-
-.term-table thead th {
-  background: var(--primary);
-  color: white;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 8px 12px;
-  text-align: left;
-  position: sticky;
-  top: 52px;
-}
-.term-table thead th:first-child { border-radius: 8px 0 0 0; }
-.term-table thead th:last-child { border-radius: 0 8px 0 0; }
-
-.term-row {
-  background: var(--card);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.15s;
-}
-.term-row:active { background: #F0F4FF; }
-.term-row.hidden { display: none; }
-
-.term-table td {
-  padding: 11px 12px;
-  font-size: 14px;
-  vertical-align: top;
-  line-height: 1.5;
-}
-.term-table td:first-child {
-  font-weight: 600;
-  color: var(--text);
-  width: 42%;
-  border-right: 1px solid var(--border);
-}
-.term-table td:last-child {
-  color: var(--muted);
-  font-size: 13px;
-}
-.term-note {
-  display: block;
-  font-size: 11px !important;
-  color: var(--accent) !important;
-  margin-top: 3px;
-  font-style: italic;
-}
-
-/* Empty state */
-.empty {
-  text-align: center;
-  padding: 48px 20px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 24px 16px;
-  font-size: 11px;
-  color: var(--muted);
-  border-top: 1px solid var(--border);
-}
-
-/* Stats bar */
-.stats-bar {
-  display: flex;
-  justify-content: space-around;
-  background: white;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
-}
-.stat {
-  text-align: center;
-}
-.stat-num {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--primary);
-}
-.stat-label {
-  font-size: 10px;
-  color: var(--muted);
-  margin-top: 2px;
-}
-
-/* Color accents for categories */
-.c1 { --cat: #1B4F72; }
-.c2 { --cat: #1ABC9C; }
-.c3 { --cat: #E67E22; }
-.c4 { --cat: #8E44AD; }
-.c5 { --cat: #C0392B; }
-.c6 { --cat: #D35400; }
-.c7 { --cat: #16A085; }
-.c8 { --cat: #2C3E50; }
-
-.cat-btn.c1.active { background: #1B4F72; border-color: #1B4F72; }
-.cat-btn.c2.active { background: #1ABC9C; border-color: #1ABC9C; }
-.cat-btn.c3.active { background: #E67E22; border-color: #E67E22; }
-.cat-btn.c4.active { background: #8E44AD; border-color: #8E44AD; }
-.cat-btn.c5.active { background: #C0392B; border-color: #C0392B; }
-.cat-btn.c6.active { background: #D35400; border-color: #D35400; }
-.cat-btn.c7.active { background: #16A085; border-color: #16A085; }
-.cat-btn.c8.active { background: #2C3E50; border-color: #2C3E50; }
-
-.section.c1 .section-title { color: #1B4F72; border-color: #1B4F72; }
-.section.c2 .section-title { color: #1ABC9C; border-color: #1ABC9C; }
-.section.c3 .section-title { color: #E67E22; border-color: #E67E22; }
-.section.c4 .section-title { color: #8E44AD; border-color: #8E44AD; }
-.section.c5 .section-title { color: #C0392B; border-color: #C0392B; }
-.section.c6 .section-title { color: #D35400; border-color: #D35400; }
-.section.c7 .section-title { color: #16A085; border-color: #16A085; }
-.section.c8 .section-title { color: #2C3E50; border-color: #2C3E50; }
-
-.section.c1 .term-table thead th { background: #1B4F72; }
-.section.c2 .term-table thead th { background: #1ABC9C; }
-.section.c3 .term-table thead th { background: #E67E22; }
-.section.c4 .term-table thead th { background: #8E44AD; }
-.section.c5 .term-table thead th { background: #C0392B; }
-.section.c6 .term-table thead th { background: #D35400; }
-.section.c7 .term-table thead th { background: #16A085; }
-.section.c8 .term-table thead th { background: #2C3E50; }
-
-@media (min-width: 600px) {
-  .term-table td:first-child { width: 30%; }
-  .sections { max-width: 600px; margin: 0 auto; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>壁球术语 · Squash Glossary</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif; background: #fff; color: #2d2d2d; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .hero { background: linear-gradient(180deg, #2b5a84 0%, #4379a7 100%); color: #fff; padding: 28px 20px 20px; }
+        .hero h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+        .hero ul { list-style: none; font-size: 0.82rem; opacity: 0.9; margin-bottom: 12px; }
+        .hero ul li { margin-bottom: 2px; }
+        .hero-pill { display: inline-block; border: 1.5px solid rgba(255,255,255,0.6); border-radius: 20px; padding: 3px 12px; font-size: 0.72rem; color: #a8d4e8; }
+        .stats-row { display: flex; background: #fff; border-bottom: 1px solid #e9ecef; }
+        .stat-item { flex: 1; text-align: center; padding: 12px 0; border-right: 1px solid #e9ecef; }
+        .stat-item:last-child { border-right: none; }
+        .stat-num { font-size: 1.4rem; font-weight: 700; color: #1a3e5c; }
+        .stat-label { font-size: 0.7rem; color: #999; margin-top: 1px; }
+        .search-wrap { padding: 10px 16px; background: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .search-input { width: 100%; padding: 9px 14px; border: 1px solid #dcdcdc; border-radius: 8px; font-size: 0.88rem; background: #fff; outline: none; color: #2d2d2d; }
+        .search-input::placeholder { color: #bbb; font-style: italic; }
+        .search-input:focus { border-color: #5da5b3; }
+        .cat-scroll { display: flex; gap: 6px; padding: 10px 16px; overflow-x: auto; background: #fff; border-bottom: 1px solid #e9ecef; white-space: nowrap; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        .cat-scroll::-webkit-scrollbar { display: none; }
+        .cat-btn { padding: 5px 14px; border-radius: 20px; border: 1px solid #ced4da; background: #fff; color: #6c757d; font-size: 0.78rem; cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
+        .cat-btn.active { background: #1a3e5c; color: #fff; border-color: #1a3e5c; }
+        .main { padding: 0 0 40px; }
+        .section { display: none; }
+        .section.active { display: block; }
+        .sec-header { position: sticky; top: 0; z-index: 5; background: #fff; padding-top: 8px; }
+        .sec-title-row { display: flex; align-items: center; padding: 0 16px; }
+        .sec-title { font-size: 0.9rem; font-weight: 700; color: var(--sec-color, #1a3e5c); white-space: nowrap; }
+        .sec-table-header { display: flex; background: var(--sec-color, #1a3e5c); padding: 6px 16px; margin: 0 16px; border-radius: 6px 6px 0 0; }
+        .sec-table-header span { font-size: 0.78rem; font-weight: 600; color: #fff; }
+        .sec-table-header span:first-child { width: 36%; flex-shrink: 0; }
+        .term-list { margin: 0 16px 16px; border: 1px solid #e9ecef; border-top: none; border-radius: 0 0 8px 8px; overflow: hidden; }
+        .term-row { display: flex; padding: 13px 10px; border-bottom: 1px solid #f0f0f0; }
+        .term-row:last-child { border-bottom: none; }
+        .term-zh { font-size: 0.85rem; font-weight: 600; color: #2d2d2d; width: 36%; flex-shrink: 0; }
+        .term-en { font-size: 0.82rem; color: #555; flex: 1; }
+        .term-note { display: block; font-size: 0.72rem; color: var(--sec-note-color, #c44133); margin-top: 1px; }
+        .page-footer { background: #f8f9fa; border-top: 1px solid #e9ecef; text-align: center; padding: 16px; font-size: 0.78rem; color: #999; }
+    </style>
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
-  <h1>壁球术语速查</h1>
-  <p>中英文双语 · 8大类别 · 90+术语<br>参考世界壁球联合会官方词汇表</p>
-  <div class="hero-badge">移动端优化 · 随时查阅</div>
+    <h1>壁球术语速查</h1>
+    <ul>
+        <li>中英双语 · 8大类别 · 90+术语</li>
+        <li>参考世界壁球联合会官方词汇表</li>
+    </ul>
+    <div class="hero-pill">移动端优化 · 随时查阅</div>
 </div>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat"><div class="stat-num">8</div><div class="stat-label">类别</div></div>
-  <div class="stat"><div class="stat-num">90+</div><div class="stat-label">术语</div></div>
-  <div class="stat"><div class="stat-num">中英</div><div class="stat-label">双语对照</div></div>
+<div class="stats-row">
+    <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">类别</div></div>
+    <div class="stat-item"><div class="stat-num">90+</div><div class="stat-label">术语</div></div>
+    <div class="stat-item"><div class="stat-num">中英</div><div class="stat-label">双语对照</div></div>
 </div>
 
-<!-- SEARCH -->
-<div class="search-bar">
-  <input type="text" id="searchInput" placeholder="搜索中文或英文术语…" oninput="filterAll()">
+<div class="search-wrap">
+    <input class="search-input" id="searchInput" type="search" placeholder="搜索中文或英文术语...">
 </div>
 
-<!-- CAT NAV -->
-<div class="cat-nav" id="catNav">
-  <button class="cat-btn c1 active" onclick="showCat('all', this)">全部</button>
-  <button class="cat-btn c1" onclick="showCat('s1', this)">击球技术</button>
-  <button class="cat-btn c2" onclick="showCat('s2', this)">场地设施</button>
-  <button class="cat-btn c3" onclick="showCat('s3', this)">战术跑位</button>
-  <button class="cat-btn c4" onclick="showCat('s4', this)">计分规则</button>
-  <button class="cat-btn c5" onclick="showCat('s5', this)">裁判术语</button>
-  <button class="cat-btn c6" onclick="showCat('s6', this)">赛事级别</button>
-  <button class="cat-btn c7" onclick="showCat('s7', this)">运动员</button>
-  <button class="cat-btn c8" onclick="showCat('s8', this)">器材</button>
+<div class="cat-scroll">
+    <button class="cat-btn active" data-cat="all">全部</button>
+    <button class="cat-btn" data-cat="0">击球技术</button>
+    <button class="cat-btn" data-cat="1">场地与设施</button>
+    <button class="cat-btn" data-cat="2">战术与跑位</button>
+    <button class="cat-btn" data-cat="3">计分规则</button>
+    <button class="cat-btn" data-cat="4">裁判术语</button>
+    <button class="cat-btn" data-cat="5">赛事与级别</button>
+    <button class="cat-btn" data-cat="6">运动员与技术</button>
+    <button class="cat-btn" data-cat="7">器材</button>
 </div>
 
-<div class="sections">
+<div class="main">
+<div class="section active" id="sec-0" style="--sec-color:#1a3e5c;--sec-note-color:#c44133">
+<div class="sec-header"><div class="sec-title-row"><span class="sec-title">一、击球技术</span></div><div class="sec-table-header"><span>中文</span><span>English</span></div></div>
+<div class="term-list">
+<div class="term-row"><span class="term-zh">直击球 / 直线球</span><span class="term-en">Straight Drive</span></div>
+<div class="term-row"><span class="term-zh">斜线球</span><span class="term-en">Crosscourt Drive</span></div>
+<div class="term-row"><span class="term-zh">侧墙球</span><span class="term-en">Boast<span class="term-note">先碰侧墙再弹前墙</span></span></div>
+<div class="term-row"><span class="term-zh">两墙侧墙球</span><span class="term-en">Two-Wall Boast<span class="term-note">攻击性最强</span></span></div>
+<div class="term-row"><span class="term-zh">三墙侧墙球</span><span class="term-en">Three-Wall Boast</span></div>
+<div class="term-row"><span class="term-zh">反侧墙球</span><span class="term-en">Reverse Boast</span></div>
+<div class="term-row"><span class="term-zh">高吊球</span><span class="term-en">Lob<span class="term-note">防守神器，高弧线飞向后场</span></span></div>
+<div class="term-row"><span class="term-zh">吊球 / 短球</span><span class="term-en">Drop Shot<span class="term-note">轻柔落前墙角落，诱敌上前</span></span></div>
+<div class="term-row"><span class="term-zh">截击</span><span class="term-en">Volley<span class="term-note">球落地前空中拦截</span></span></div>
+<div class="term-row"><span class="term-zh">截击小球</span><span class="term-en">Volley Drop<span class="term-note">落地前空中轻吊前墙，高阶技术</span></span></div>
+<div class="term-row"><span class="term-zh">直线截击</span><span class="term-en">Straight Volley</span></div>
+<div class="term-row"><span class="term-zh">扣杀 / 打死球</span><span class="term-en">Kill / Put Away</span></div>
+<div class="term-row"><span class="term-zh">过顶球 / 绕头球</span><span class="term-en">Around the Head</span></div>
+<div class="term-row"><span class="term-zh">切球</span><span class="term-en">Slice<span class="term-note">带侧旋，产生弯曲轨迹</span></span></div>
+<div class="term-row"><span class="term-zh">角度球</span><span class="term-en">Angle Shot<span class="term-note">利用墙壁反弹制造刁钻落点</span></span></div>
+</div></div>
 
-  <!-- S1: 击球技术 -->
-  <div class="section c1" id="s1">
-    <div class="section-title">一、击球技术</div>
-    <table class="term-table">
-      <thead><tr><th>中文</th><th>English</th></tr></thead>
-      <tbody>
-        <tr class="term-row"><td>直击球 / 直线球</td><td>Straight Drive</td></tr>
-        <tr class="term-row"><td>斜线球</td><td>Crosscourt Drive</td></tr>
-        <tr class="term-row"><td>侧墙球</td><td>Boast <span class="term-note">先碰侧墙再弹前墙</span></td></tr>
-        <tr class="term-row"><td>两墙侧墙球</td><td>Two-Wall Boast <span class="term-note">攻击性最强</span></td></tr>
-        <tr class="term-row"><td>三墙侧墙球</td><td>Three-Wall Boast</td></tr>
-        <tr class="term-row"><td>反侧墙球</td><td>Reverse Boast</td></tr>
-        <tr class="term-row"><td>高吊球</td><td>Lob <span class="term-note">防守神器，高弧线飞向后场</span></td></tr>
-        <tr class="term-row"><td>吊球（Drop Shot）</td><td>Drop Shot <span class="term-note">轻击前墙角落，球落地后几乎不动，诱敌上网</span></td></tr>
-        <tr class="term-row"><td>高吊球（Lob）</td><td>Lob <span class="term-note">高弧线飞向后场，落点偏后，用于防守或打乱对手节奏</span></td></tr>
-        <tr class="term-row"><td>截击</td><td>Volley <span class="term-note">球落地前空中拦截</span></td></tr>
-        <tr class="term-row"><td>截击小球</td><td>Volley Drop <span class="term-note">落地前空中轻吊前墙，高阶技术</span></td></tr>
-        <tr class="term-row"><td>直线截击</td><td>Straight Volley</td></tr>
-        <tr class="term-row"><td>扣杀 / 打死球</td><td>Kill / Put Away</td></tr>
-        <tr class="term-row"><td>过顶球 / 绕头球</td><td>Around the Head</td></tr>
-        <tr class="term-row"><td>切球</td><td>Slice <span class="term-note">带侧旋，产生弯曲轨迹</span></td></tr>
-        <tr class="term-row"><td>角度球</td><td>Angle Shot <span class="term-note">利用墙壁反弹制造刁钻落点</span></td></tr>
-      </tbody>
-    </table>
-  </div>
+<div class="section active" id="sec-1" style="--sec-color:#36B695;--sec-note-color:#c44133">
+<div class="sec-header"><div class="sec-title-row"><span class="sec-title">二、场地与设施</span></div><div class="sec-table-header"><span>中文</span><span>English</span></div></div>
+<div class="term-list">
+<div class="term-row"><span class="term-zh">壁球场</span><span class="term-en">Squash Court<span class="term-note">长9.75m × 宽6.4m，封闭室内</span></span></div>
+<div class="term-row"><span class="term-zh">前墙</span><span class="term-en">Front Wall<span class="term-note">发球必须先击中此墙</span></span></div>
+<div class="term-row"><span class="term-zh">后墙</span><span class="term-en">Back Wall</span></div>
+<div class="term-row"><span class="term-zh">侧墙</span><span class="term-en">Side Wall</span></div>
+<div class="term-row"><span class="term-zh">低线（金属档板）</span><span class="term-en">Tin</span></div>
+<div class="term-row"><span class="term-zh">出界线</span><span class="term-en">Out Line</span></div>
+<div class="term-row"><span class="term-zh">发球线</span><span class="term-en">Service Line</span></div>
+<div class="term-row"><span class="term-zh">发球区</span><span class="term-en">Service Box</span></div>
+<div class="term-row"><span class="term-zh">底线 / Nick</span><span class="term-en">Nick<span class="term-note">侧墙与地板交界处</span></span></div>
+<div class="term-row"><span class="term-zh">半场线</span><span class="term-en">Half Court Line</span></div>
+<div class="term-row"><span class="term-zh">球拍甜区</span><span class="term-en">Sweet Spot</span></div>
+</div></div>
 
-  <!-- S2: 场地设施 -->
-  <div class="section c2" id="s2">
-    <div class="section-title">二、场地与设施</div>
-    <table class="term-table">
-      <thead><tr><th>中文</th><th>English</th></tr></thead>
-      <tbody>
-        <tr class="term-row"><td>壁球场</td><td>Squash Court <span class="term-note">长9.75m × 宽6.4m，封闭室内</span></td></tr>
-        <tr class="term-row"><td>前墙</td><td>Front Wall <span class="term-note">发球必须先击中此墙</span></td></tr>
-        <tr class="term-row"><td>后墙</td><td>Back Wall</td></tr>
-        <tr class="term-row"><td>侧墙</td><td>Side Wall</td></tr>
-        <tr class="term-row"><td>低线（金属档板）</td><td>Tin</td></tr>
-        <tr class="term-row"><td>出界线</td><td>Out Line</td></tr>
-        <tr class="term-row"><td>发球线</td><td>Service Line</td></tr>
-        <tr class="term-row"><td>发球区</td><td>Service Box</td></tr>
-        <tr class="term-row"><td>底线 / Nick</td><td>Nick <span class="term-note">侧墙与地板交界处</span></td></tr>
-        <tr class="term-row"><td>半场线</td><td>Half Court Line</td></tr>
-        <tr class="term-row"><td>球拍甜区</td><td>Sweet Spot</td></tr>
-      </tbody>
-    </table>
-  </div>
+<div class="section active" id="sec-2" style="--sec-color:#4A6570;--sec-note-color:#c44133">
+<div class="sec-header"><div class="sec-title-row"><span class="sec-title">三、战术与跑位</span></div><div class="sec-table-header"><span>中文</span><span>English</span></div></div>
+<div class="term-list">
+<div class="term-row"><span class="term-zh">回合 / 连续对打</span><span class="term-en">Rally<span class="term-note">从发球到得分之间的全过程</span></span></div>
+<div class="term-row"><span class="term-zh">T字位 / 中央站位</span><span class="term-en">T Position / The T</span></div>
+<div class="term-row"><span class="term-zh">回位</span><span class="term-en">Return to the T</span></div>
+<div class="term-row"><span class="term-zh">拉开角度</span><span class="term-en">Open up the Court</span></div>
+<div class="term-row"><span class="term-zh">压迫进攻</span><span class="term-en">Pressure / Attacking Play</span></div>
+<div class="term-row"><span class="term-zh">中场球</span><span class="term-en">Middle Ball</span></div>
+<div class="term-row"><span class="term-zh">假动作</span><span class="term-en">Feint</span></div>
+<div class="term-row"><span class="term-zh">步法 / 分腿起动</span><span class="term-en">Footwork / Split Step</span></div>
+<div class="term-row"><span class="term-zh">随挥</span><span class="term-en">Follow Through</span></div>
+<div class="term-row"><span class="term-zh">盯球</span><span class="term-en">Watch the Ball</span></div>
+</div></div>
 
-  <!-- S3: 战术跑位 -->
-  <div class="section c3" id="s3">
-    <div class="section-title">三、战术与跑位</div>
-    <table class="term-table">
-      <thead><tr><th>中文</th><th>English</th></tr></thead>
-      <tbody>
-        <tr class="term-row"><td>回合 / 连续对打</td><td>Rally <span class="term-note">从发球到得分之间的全过程</span></td></tr>
-        <tr class="term-row"><td>T字位 / 中央站位</td><td>T Position / The T</td></tr>
-        <tr class="term-row"><td>回位</td><td>Return to the T</td></tr>
-        <tr class="term-row"><td>拉开角度</td><td>Open up the Court</td></tr>
-        <tr class="term-row"><td>压迫进攻</td><td>Pressure / Attacking Play</td></tr>
-        <tr class="term-row"><td>中场球</td><td>Middle Ball</td></tr>
-        <tr class="term-row"><td>假动作</td><td>Feint</td></tr>
-        <tr class="term-row"><td>步法 / 分腿起动</td><td>Footwork / Split Step</td></tr>
-        <tr class="term-row"><td>随挥</td><td>Follow Through</td></tr>
-        <tr class="term-row"><td>盯球</td><td>Watch the Ball</td></tr>
-      </tbody>
-    </table>
-  </div>
+<div class="section active" id="sec-3" style="--sec-color:#C05C3B;--sec-note-color:#4A6570">
+<div class="sec-header"><div class="sec-title-row"><span class="sec-title">四、计分规则</span></div><div class="sec-table-header"><span>中文</span><span>English</span></div></div>
+<div class="term-list">
+<div class="term-row"><span class="term-zh">积分制（每球得分）</span><span class="term-en">PAR（Point-a-Rally）</span></div>
+<div class="term-row"><span class="term-zh">局</span><span class="term-en">Game</span></div>
+<div class="term-row"><span class="term-zh">场 / 场比赛</span><span class="term-en">Match</span></div>
+<div class="term-row"><span class="term-zh">发球权</span><span class="term-en">Hand-In</span></div>
+<div class="term-row"><span class="term-zh">失发球权</span><span class="term-en">Hand-Out</span></div>
+<div class="term-row"><span class="term-zh">换发球</span><span class="term-en">Change of Service</span></div>
+<div class="term-row"><span class="term-zh">换边</span><span class="term-en">Change of Ends</span></div>
+<div class="term-row"><span class="term-zh">平分决胜</span><span class="term-en">Tie-Break<span class="term-note">10-10后领先2分获胜</span></span></div>
+<div class="term-row"><span class="term-zh">暂停</span><span class="term-en">Time-Out<span class="term-note">每场90秒</span></span></div>
+</div></div>
 
-  <!-- S4: 计分规则 -->
-  <div class="section c4" id="s4">
-    <div class="section-title">四、计分规则</div>
-    <table class="term-table">
-      <thead><tr><th>中文</th><th>English</th></tr></thead>
-      <tbody>
-        <tr class="term-row"><td>积分制（每球得分）</td><td>PAR（Point-a-Rally）</td></tr>
-        <tr class="term-row"><td>局</td><td>Game</td></tr>
-        <tr class="term-row"><td>场 / 场比赛</td><td>Match</td></tr>
-        <tr class="term-row"><td>发球权</td><td>Hand-In</td></tr>
-        <tr class="term-row"><td>失发球权</td><td>Hand-Out</td></tr>
-        <tr class="term-row"><td>换发球</td><td>Change of Service</td></tr>
-        <tr class="term-row"><td>换边</td><td>Change of Ends</td></tr>
-        <tr class="term-row"><td>平分决胜</td><td>Tie-Break <span class="term-note">10-10后领先2分获胜</span></td></tr>
-        <tr class="term-row"><td>暂停</td><td>Time-Out <span class="term-note">每场90秒</span></td></tr>
-      </tbody>
-    </table>
-  </div>
+<div class="section active" id="sec-4" style="--sec-color:#285B81;--sec-note-color:#c44133">
+<div class="sec-header"><div class="sec-title-row"><span class="sec-title">五、裁判术语</span></div><div class="sec-table-header"><span>中文</span><span>English</span></div></div>
+<div class="term-list">
+<div class="term-row"><span class="term-zh">击球（判罚得分）</span><span class="term-en">Stroke<span class="term-note">对手干扰严重，直接得分</span></span></div>
+<div class="term-row"><span class="term-zh">有效继续（不记分）</span><span class="term-en">Yes Let</span></div>
+<div class="term-row"><span class="term-zh">无效（不重打）</span><span class="term-en">No Let</span></div>
+<div class="term-row"><span class="term-zh">申诉被驳回</span><span class="term-en">Not Reasonable</span></div>
+<div class="term-row"><span class="term-zh">请求裁断</span><span class="term-en">Appeal</span></div>
+<div class="term-row"><span class="term-zh">干扰</span><span class="term-en">Interference</span></div>
+<div class="term-row"><span class="term-zh">阻挡视线</span><span class="term-en">Obstruction</span></div>
+<div class="term-row"><span class="term-zh">不安全击球</span><span class="term-en">Dangerous Play</span></div>
+<div class="term-row"><span class="term-zh">举拍示意安全</span><span class="term-en">Hand Down</span></div>
+<div class="term-row"><span class="term-zh">未有效击球</span><span class="term-en">Not Up<span class="term-note">击球未正确击中/球落地弹跳两次/球触球员衣物</span></span></div>
+<div class="term-row"><span class="term-zh">出界（Down）</span><span class="term-en">Down<span class="term-note">回球落地或碰Tin后才触前墙</span></span></div>
+<div class="term-row"><span class="term-zh">出界（Out）</span><span class="term-en">Out<span class="term-note">球击中或越过界线/顶边/围板上方</span></span></div>
+<div class="term-row"><span class="term-zh">发球犯规</span><span class="term-en">Fault<span class="term-note">发球违例，不计得分</span></span></div>
+</div></div>
 
-  <!-- S5: 裁判术语 -->
-  <div class="section c5" id="s5">
-    <div class="section-title">五、裁判术语</div>
-    <table class="term-table">
-      <thead><tr><th>中文</th><th>English</th></tr></thead>
-      <tbody>
-        <tr class="term-row"><td>击球（判罚得分）</td><td>Stroke <span class="term-note">对手干扰严重，直接得分</span></td></tr>
-        <tr class="term-row"><td>有效继续（不记分）</td><td>Yes Let</td></tr>
-        <tr class="term-row"><td>无效（不重打）</td><td>No Let</td></tr>
-        <tr class="term-row"><td>申诉被驳回</td><td>Not Reasonable</td></tr>
-        <tr class="term-row"><td>请求裁断</td><td>Appeal</td></tr>
-        <tr class="term-row"><td>干扰</td><td>Interference</td></tr>
-        <tr class="term-row"><td>阻挡视线</td><td>Obstruction</td></tr>
-        <tr class="term-row"><td>不安全击球</td><td>Dangerous Play</td></tr>
-        <tr class="term-row"><td>举拍示意安全</td><td>Hand Down</td></tr>
-        <tr class="term-row"><td>未有效击球</td><td>Not Up <span class="term-note">击球未正确击中/球落地弹跳两次/球触球员衣物</span></td></tr>
-        <tr class="term-row"><td>出界（Down）</td><td>Down <span class="term-note">回球落地或碰Tin后才触前墙</span></td></tr>
-        <tr class="term-row"><td>出界（Out）</td><td>Out <span class="term-note">球击中或越过界线/顶边/围板上方</span></td></tr>
-        <tr class="term-row"><td>发球犯规</td><td>Fault <span class="term-note">发球违例，不计得分</span></td></tr>
-      </tbody>
-    </table>
-  </div>
+<div class="section active" id="sec-5" style="--sec-color:#3D5A8A;--sec-note-color:#c44133">
+<div class="sec-header"><div class="sec-title-row"><span class="sec-title">六、赛事与级别</span></div><div class="sec-table-header"><span>中文</span><span>English</span></div></div>
+<div class="term-list">
+<div class="term-row"><span class="term-zh">世界锦标赛</span><span class="term-en">World Squash Championships</span></div>
+<div class="term-row"><span class="term-zh">亚洲锦标赛</span><span class="term-en">Asian Squash Championships</span></div>
+<div class="term-row"><span class="term-zh">全国锦标赛</span><span class="term-en">National Championships</span></div>
+<div class="term-row"><span class="term-zh">青少年组</span><span class="term-en">Junior U19 / U17 / U15 / U13 / U11<span class="term-note">Under-19 / 17 / 15 / 13 / 11</span></span></div>
+<div class="term-row"><span class="term-zh">女子组</span><span class="term-en">Women's</span></div>
+<div class="term-row"><span class="term-zh">男子组</span><span class="term-en">Men's</span></div>
+<div class="term-row"><span class="term-zh">公开赛</span><span class="term-en">Open</span></div>
+<div class="term-row"><span class="term-zh">俱乐部联赛</span><span class="term-en">Club League</span></div>
+<div class="term-row"><span class="term-zh">种子选手 / 种子排名</span><span class="term-en">Seed / Seeding</span></div>
+<div class="term-row"><span class="term-zh">金牌 / 银牌 / 铜牌赛</span><span class="term-en">Gold / Silver / Bronze</span></div>
+</div></div>
 
-  <!-- S6: 赛事级别 -->
-  <div class="section c6" id="s6">
-    <div class="section-title">六、赛事与级别</div>
-    <table class="term-table">
-      <thead><tr><th>中文</th><th>English</th></tr></thead>
-      <tbody>
-        <tr class="term-row"><td>世界锦标赛</td><td>World Squash Championships</td></tr>
-        <tr class="term-row"><td>亚洲锦标赛</td><td>Asian Squash Championships</td></tr>
-        <tr class="term-row"><td>全国锦标赛</td><td>National Championships</td></tr>
-        <tr class="term-row"><td>青少年组</td><td>Junior</td></tr>
-        <tr class="term-row"><td>U19 / U17 / U15 / U13 / U11</td><td>Under-19 / 17 / 15 / 13 / 11</td></tr>
-        <tr class="term-row"><td>女子组</td><td>Women's</td></tr>
-        <tr class="term-row"><td>男子组</td><td>Men's</td></tr>
-        <tr class="term-row"><td>公开赛</td><td>Open</td></tr>
-        <tr class="term-row"><td>俱乐部联赛</td><td>Club League</td></tr>
-        <tr class="term-row"><td>种子选手 / 种子排名</td><td>Seed / Seeding</td></tr>
-        <tr class="term-row"><td>金牌 / 银牌 / 铜牌赛</td><td>Gold / Silver / Bronze</td></tr>
-      </tbody>
-    </table>
-  </div>
+<div class="section active" id="sec-6" style="--sec-color:#607080;--sec-note-color:#c44133">
+<div class="sec-header"><div class="sec-title-row"><span class="sec-title">七、运动员与技术</span></div><div class="sec-table-header"><span>中文</span><span>English</span></div></div>
+<div class="term-list">
+<div class="term-row"><span class="term-zh">正手</span><span class="term-en">Forehand</span></div>
+<div class="term-row"><span class="term-zh">反手</span><span class="term-en">Backhand</span></div>
+<div class="term-row"><span class="term-zh">发球</span><span class="term-en">Serve / Service</span></div>
+<div class="term-row"><span class="term-zh">接发球</span><span class="term-en">Receive / Return</span></div>
+<div class="term-row"><span class="term-zh">截击</span><span class="term-en">Volley</span></div>
+<div class="term-row"><span class="term-zh">正手握拍</span><span class="term-en">Thumb Grip / Orthodox Grip</span></div>
+<div class="term-row"><span class="term-zh">反手握拍</span><span class="term-en">Reverse Grip</span></div>
+<div class="term-row"><span class="term-zh">热身</span><span class="term-en">Warm Up</span></div>
+</div></div>
 
-  <!-- S7: 运动员技术 -->
-  <div class="section c7" id="s7">
-    <div class="section-title">七、运动员与技术</div>
-    <table class="term-table">
-      <thead><tr><th>中文</th><th>English</th></tr></thead>
-      <tbody>
-        <tr class="term-row"><td>正手</td><td>Forehand</td></tr>
-        <tr class="term-row"><td>反手</td><td>Backhand</td></tr>
-        <tr class="term-row"><td>发球</td><td>Serve / Service</td></tr>
-        <tr class="term-row"><td>接发球</td><td>Receive / Return</td></tr>
-        <tr class="term-row"><td>截击</td><td>Volley</td></tr>
-        <tr class="term-row"><td>正手握拍</td><td>Thumb Grip / Orthodox Grip</td></tr>
-        <tr class="term-row"><td>反手握拍</td><td>Reverse Grip</td></tr>
-        <tr class="term-row"><td>热身</td><td>Warm Up</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- S8: 器材 -->
-  <div class="section c8" id="s8">
-    <div class="section-title">八、器材</div>
-    <table class="term-table">
-      <thead><tr><th>中文</th><th>English</th></tr></thead>
-      <tbody>
-        <tr class="term-row"><td>壁球拍</td><td>Squash Racket <span class="term-note">通常重110-140g</span></td></tr>
-        <tr class="term-row"><td>壁球</td><td>Squash Ball <span class="term-note">标准直径40mm</span></td></tr>
-        <tr class="term-row"><td>单黄点球（正式比赛球）</td><td>Yellow Dot <span class="term-note">弹性较大，EN标准正式比赛球（35°C以上）</span></td></tr>
-        <tr class="term-row"><td>双黄点球（超高温球）</td><td>Double Yellow Dot <span class="term-note">弹性较小，超高温专用（45°C以上）</span></td></tr>
-        <tr class="term-row"><td>蓝点球（中级球）</td><td>Blue Dot <span class="term-note">适合中级球员</span></td></tr>
-        <tr class="term-row"><td>红点球（初级球）</td><td>Red Dot <span class="term-note">适合初学者</span></td></tr>
-        <tr class="term-row"><td>手胶</td><td>Grip / Overgrip</td></tr>
-        <tr class="term-row"><td>护目镜</td><td>Protective Eyewear / Goggles <span class="term-note">青少年必戴</span></td></tr>
-        <tr class="term-row"><td>球拍弦</td><td>String</td></tr>
-        <tr class="term-row"><td>减震器</td><td>Damper</td></tr>
-      </tbody>
-    </table>
-  </div>
-
+<div class="section active" id="sec-7" style="--sec-color:#6B7280;--sec-note-color:#c44133">
+<div class="sec-header"><div class="sec-title-row"><span class="sec-title">八、器材</span></div><div class="sec-table-header"><span>中文</span><span>English</span></div></div>
+<div class="term-list">
+<div class="term-row"><span class="term-zh">壁球拍</span><span class="term-en">Squash Racket<span class="term-note">通常重110-140g</span></span></div>
+<div class="term-row"><span class="term-zh">壁球</span><span class="term-en">Squash Ball<span class="term-note">标准直径40mm</span></span></div>
+<div class="term-row"><span class="term-zh">单黄点球</span><span class="term-en">Yellow Dot<span class="term-note">正式比赛用球（白色球）</span></span></div>
+<div class="term-row"><span class="term-zh">双黄点球</span><span class="term-en">Double Yellow Dot<span class="term-note">正式比赛用球（双黄点）</span></span></div>
+<div class="term-row"><span class="term-zh">蓝点球</span><span class="term-en">Blue Dot</span></div>
+<div class="term-row"><span class="term-zh">红点球</span><span class="term-en">Red Dot</span></div>
+<div class="term-row"><span class="term-zh">手胶</span><span class="term-en">Grip / Overgrip</span></div>
+<div class="term-row"><span class="term-zh">护目镜</span><span class="term-en">Protective Eyewear / Goggles<span class="term-note">青少年必戴</span></span></div>
+<div class="term-row"><span class="term-zh">球拍弦</span><span class="term-en">String</span></div>
+<div class="term-row"><span class="term-zh">减震器</span><span class="term-en">Damper</span></div>
+</div></div>
 </div>
 
-<div class="footer">
-  📌 参考来源：世界壁球联合会（WSF）、亚洲壁球联合会（ASF）<br>
-  📱 壁球术语速查 · 随时查阅
-</div>
+<div class="page-footer">📌 参考来源：世界壁球联合会（WSF）、亚洲壁球联合会（ASF）<br>📱 壁球术语速查 · 随时查阅</div>
 
 <script>
-let currentCat = 'all';
+(function() {
+    var currentCat = 'all';
 
-function showCat(id, btn) {
-  currentCat = id;
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.section').forEach(s => {
-    s.style.display = (id === 'all' || s.id === id) ? 'block' : 'none';
-  });
-  filterAll();
-}
+    function filterTerms() {
+        var q = document.getElementById('searchInput').value.trim().toLowerCase();
+        document.querySelectorAll('.term-row').forEach(function(row) {
+            var zh = row.querySelector('.term-zh').textContent.toLowerCase();
+            var en = row.querySelector('.term-en').textContent.toLowerCase();
+            var match = !q || zh.includes(q) || en.includes(q);
+            row.style.display = match ? '' : 'none';
+        });
+    }
+    document.getElementById('searchInput').addEventListener('input', filterTerms);
 
-function filterAll() {
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  document.querySelectorAll('.section').forEach(sec => {
-    if (currentCat !== 'all' && sec.id !== currentCat) return;
-    let visible = 0;
-    sec.querySelectorAll('.term-row').forEach(row => {
-      const zh = row.cells[0].textContent.toLowerCase();
-      const en = row.cells[1].textContent.toLowerCase();
-      const match = !q || zh.includes(q) || en.includes(q);
-      row.classList.toggle('hidden', !match);
-      if (match) visible++;
+    document.querySelectorAll('.cat-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+            var cat = this.getAttribute('data-cat');
+            if (cat === 'all') {
+                document.querySelectorAll('.section').forEach(function(s) { s.classList.add('active'); });
+            } else {
+                document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+                var t = document.getElementById('sec-' + cat);
+                if (t) t.classList.add('active');
+            }
+            filterTerms();
+        });
     });
+})();
+</script>
+<style>
+#minimax-floating-ball {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 12px;
+  background: #222222;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  color: #F8F8F8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#minimax-floating-ball:hover {
+  transform: translateY(-2px);
+  background: #383838;
+}
+.minimax-ball-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minimax-logo-wave {
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg%20preserveAspectRatio%3D%27none%27%20width%3D%27100%25%27%20height%3D%27100%25%27%20overflow%3D%27visible%27%20style%3D%27display%3A%20block%3B%27%20viewBox%3D%270%200%20170.136%20138.225%27%20fill%3D%27none%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%3E%3Cg%20id%3D%27Frame%202116748449%27%3E%3Cpath%20id%3D%27Subtract%27%20d%3D%27M170%20101.783C170%20105.144%20168.49%20108.327%20165.886%20110.453L134.963%20135.702C132.964%20137.334%20130.463%20138.225%20127.883%20138.225H10.4938C4.69824%20138.225%200%20133.527%200%20127.732V39.2289C0%2035.8597%201.51758%2032.6698%204.13162%2030.5442L38.5402%202.56547C40.536%200.942662%2043.0298%200.0567377%2045.602%200.0567377H159.506C165.302%200.0567377%20170%204.75498%20170%2010.5506V101.783Z%27%20fill%3D%27black%27%20style%3D%27fill%3Ablack%3Bfill-opacity%3A1%3B%27/%3E%3Cpath%20id%3D%27Subtract_2%27%20d%3D%27M149.011%2094.4632C149.011%2096.1471%20148.253%2097.7415%20146.946%2098.8043L125.893%20115.936C124.895%20116.748%20123.648%20117.191%20122.361%20117.191H24.6479C22.716%20117.191%2021.15%20115.625%2021.15%20113.693V46.1166C21.15%2044.4267%2021.9135%2042.8274%2023.2274%2041.7648L47.367%2022.2437C48.3638%2021.4376%2049.607%2020.9982%2050.8888%2020.9988L145.514%2021.0427C147.446%2021.0436%20149.011%2022.6094%20149.011%2024.5406V94.4632Z%27%20fill%3D%27white%27%20style%3D%27fill%3Awhite%3Bfill-opacity%3A1%3B%27/%3E%3Cpath%20id%3D%27Rectangle%20111142564%27%20d%3D%27M42.111%2080.8025C42.111%2077.7115%2044.6167%2075.2057%2047.7077%2075.2057H60.9999C64.0908%2075.2057%2066.5966%2077.7115%2066.5966%2080.8025V121.029H42.111V80.8025Z%27%20fill%3D%27black%27%20style%3D%27fill%3Ablack%3Bfill-opacity%3A1%3B%27/%3E%3Cpath%20id%3D%27Rectangle%20111142567%27%20d%3D%27M79.1894%2080.8025C79.1894%2077.7115%2081.6952%2075.2057%2084.7861%2075.2057H98.0783C101.169%2075.2057%20103.675%2077.7115%20103.675%2080.8025V121.029H79.1894V80.8025Z%27%20fill%3D%27black%27%20style%3D%27fill%3Ablack%3Bfill-opacity%3A1%3B%27/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 11px;
+  background-color: #8FD1FF;
+  border-radius: 4px;
+}
+
+.minimax-ball-text {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.minimax-close-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.minimax-close-icon:hover {
+  opacity: 1;
+}
+</style>
+<div id="minimax-floating-ball">
+  <div class="minimax-ball-content">
+    <div class="minimax-logo-wave"></div>
+    <span class="minimax-ball-text">Created by MiniMax Agent</span>
+  </div>
+  <div class="minimax-close-icon">×</div>
+</div>
+<script>
+// Initialize floating ball functionality
+function initFloatingBall() {
+  const ball = document.getElementById('minimax-floating-ball');
+  if (!ball) return;
+
+  // Initial animation
+  ball.style.opacity = '0';
+  ball.style.transform = 'translateY(20px)';
+
+  setTimeout(() => {
+    ball.style.opacity = '1';
+    ball.style.transform = 'translateY(0)';
+  }, 500);
+
+  // Handle logo click
+  const ballContent = ball.querySelector('.minimax-ball-content');
+  ballContent.addEventListener('click', function (e) {
+    e.stopPropagation();
+    window.open('https://agent.minimaxi.com/', '_blank');
+    ball.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      ball.style.transform = 'scale(1)';
+    }, 100);
+  });
+
+  // Handle close button click
+  const closeIcon = ball.querySelector('.minimax-close-icon');
+  closeIcon.addEventListener('click', function (e) {
+    e.stopPropagation();
+    ball.style.opacity = '0';
+    ball.style.transform = 'translateY(20px)';
+
+    setTimeout(() => {
+      ball.style.display = 'none';
+    }, 300);
   });
 }
 
-// Init: show first section
-showCat('all', document.querySelector('.cat-btn'));
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', initFloatingBall); 
 </script>
-
 </body>
 </html>
